@@ -107,8 +107,8 @@ export const login = async (req, res) => {
     res.cookie("access_token", token, {
       expires: new Date(Date.now() + 24 * 3600000),
       sameSite: "none",
-      secure: true,
-      httpOnly: true,
+      secure: false,
+      httpOnly: false,
     });
 
     res.status(200).json({
@@ -129,8 +129,8 @@ export const logout = async (req, res) => {
     res.clearCookie("access_token", {
       expires: new Date(Date.now() - 1),
       sameSite: "none",
-      secure: true,
-      httpOnly: true,
+      secure: false,
+      httpOnly: false,
     });
 
     res.status(200).json({ message: "Sesión cerrada correctamente" });
