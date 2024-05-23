@@ -124,6 +124,7 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
+  console.log("logout")
   try {
     res.clearCookie("access_token", {
       expires: new Date(Date.now() - 1),
