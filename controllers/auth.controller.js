@@ -108,7 +108,7 @@ export const login = async (req, res) => {
       expires: new Date(Date.now() + 24 * 3600000),
       sameSite: "none",
       secure: false,
-      httpOnly: false,
+      httpOnly: true,
     });
 
     res.status(200).json({
@@ -130,7 +130,7 @@ export const logout = async (req, res) => {
       expires: new Date(Date.now() - 1),
       sameSite: "none",
       secure: false,
-      httpOnly: false,
+      httpOnly: true,
     });
 
     res.status(200).json({ message: "Sesión cerrada correctamente" });
