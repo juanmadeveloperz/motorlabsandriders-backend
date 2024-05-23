@@ -107,7 +107,7 @@ export const login = async (req, res) => {
     res.cookie("access_token", token, {
       expires: new Date(Date.now() + 24 * 3600000),
       sameSite: "none",
-      secure: false,
+      secure: true,
       httpOnly: true,
     });
 
@@ -129,7 +129,7 @@ export const logout = async (req, res) => {
     res.clearCookie("access_token", {
       expires: new Date(Date.now() - 1),
       sameSite: "none",
-      secure: false,
+      secure: true,
       httpOnly: true,
     });
 
