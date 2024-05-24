@@ -144,3 +144,21 @@ export const auth = async (req, res) => {
   const { user } = req;
   res.status(200).json(user);
 };
+
+const setAccessTokenCookie = (res, token) => {
+  res.cookie("access_token", token, {
+    expires: new Date(Date.now() + 24 * 3600000),
+    sameSite: "None",
+    secure: true,
+    httpOnly: true,
+  });
+};
+
+const clearAccessTokenCookie = (res) => {
+  res.clearCookie("access_token", {
+    expires: new Date(Date.now() - 1),
+    sameSite: "None",
+    secure: true,
+    httpOnly: true,
+  });
+};
