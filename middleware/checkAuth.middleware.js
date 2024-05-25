@@ -13,7 +13,7 @@ const checkAuth = async (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decodedToken.id;
 
-    req.user = await User.findById(userId).select("__id name email role");
+    req.user = await User.findById(userId).select("_id name email role");
 
     return next();
   } catch (error) {
